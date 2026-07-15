@@ -1,0 +1,24 @@
+# 1. ALWAYS SET UP MONITORS FIRST
+xrandr --output HDMI-2 --mode 1920x1080 --rate 60.00 --pos 0x0 \
+       --output HDMI-1 --mode 1024x768 --rate 60.00 --below HDMI-2
+
+# 2. Configure display behaviors
+xset s off
+xset -dpms
+export GTK_THEME=Adwaita-dark
+
+# 3. Start audio and system utilities
+pipewire &
+pipewire-pulse &
+wireplumber &
+clipmenud &
+
+# 4. Start your status bars
+slstatus &
+
+# 5. Not suckless related seperate on its own can be manually launched later
+#tint2 &
+#stalonetray &
+
+# 5. Launch Window Manager
+exec dwm
