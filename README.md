@@ -74,3 +74,24 @@ If your other PC uses Intel graphics, add these power management and hardware ac
    ```bash
    doas grub-mkconfig -o /boot/grub/grub.cfg
    ```
+
+## Intel GPU Performance & Boot Optimizations (Gentoo NUC)
+If your other PC uses Intel graphics, add these power management and hardware acceleration parameters to ensure video performance matches the NUC:
+
+1. Edit your system configuration:
+   ```bash
+   doas nano /etc/default/grub
+   ```
+2. Update your kernel command line with these parameters:
+   ```text
+   GRUB_TIMEOUT=0
+   GRUB_CMDLINE_LINUX_DEFAULT="i915.enable_psr=0 i915.enable_guc=3 i915.enable_fbc=1 loglevel=3 quiet"
+   ```
+3. Re-generate your boot config layout (check which directory exists on your system):
+   ```bash
+   # Standard installation path:
+   doas grub-mkconfig -o /boot/grub/grub.cfg
+
+   # Alternative EFI installation path:
+   doas grub-mkconfig -o /boot/efi/grub/grub.cfg
+   ```
