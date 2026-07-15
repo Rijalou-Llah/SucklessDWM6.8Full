@@ -32,3 +32,13 @@ git fetch origin
 git reset --hard origin/main
 ```
 
+
+## Launching DWM on your other PC
+After cloning, symlink the backed-up xinitrc file to your home directory:
+```bash
+ln -sf ~/scr/scripts/xinitrc.bak ~/.xinitrc
+```
+Start your desktop environment:
+```bash
+startx
+```
