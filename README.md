@@ -31,3 +31,4 @@ git fetch origin
 # 2. Reset your local folder to match the cloud exactly
 git reset --hard origin/main
 ```
+
