@@ -42,3 +42,18 @@ Start your desktop environment:
 ```bash
 startx
 ```
+
+## Optional Hardware Tweaks (Gentoo NUC Configuration)
+If your other hardware requires similar performance optimizations, update your local bootloader configurations manually:
+1. Edit your system grub config:
+   ```bash
+   doas nano /etc/default/grub
+   ```
+2. Append your required kernel parameters (e.g., turning off turbo boost):
+   ```text
+   GRUB_CMDLINE_LINUX_DEFAULT="intel_pstate=disable ..."
+   ```
+3. Re-generate your configuration layout:
+   ```bash
+   doas grub-mkconfig -o /boot/grub/grub.cfg
+   ```
